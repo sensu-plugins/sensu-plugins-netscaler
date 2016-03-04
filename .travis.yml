@@ -16,16 +16,18 @@ notifications:
     on_failure: always
 script:
 - bundle exec rake default
+- gem build sensu-plugins-netscaler.gemspec
+- gem install sensu-plugins-netscaler-*.gem
 deploy:
   provider: rubygems
   api_key:
-    secure: S9KPGFAZgc8OcUjliQCcfzNy5ENYCalmN0chyhSuy97DzpjGBJbRikjjRlE5sV9iR7u4+FNXPnzKTpCTpDzRByz2YX0T3wMBNMvwxkGAXVJM3nEo9f2bFVI6aWsTQM6AtPMQy9ySRbW8xPfqR/xL5B8AzwIph2cqE3/YHWrQclw=
+    secure: gFhNFGAsT80MPwkBkyvynW81TTxALnkKf5uO07YxmgMABD3TG7ZV0oRcYqruUAULqbj0IKV5gyfWxL/GUmyzjG6sM03LJeB6VNIs8cLFs8Bq3gFR6C2/KEyaimGEzmv1UidfAyDLfqmjI+r/zsnw3KSjSjc8bXg8AL5ey8anLxs=
   gem: sensu-plugins-netscaler
   on:
     tags: true
+    repo: sensu-plugins/sensu-plugins-netscaler
     all_branches: true
     rvm: 1.9.3
     rvm: 2.0
     rvm: 2.1
     rvm: 2.2
-    repo: sensu-plugins/sensu-plugins-netscaler
